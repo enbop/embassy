@@ -1415,6 +1415,8 @@ impl_pio!(PIO2, 2, PIO2, PIO2_0, PIO2_IRQ_0);
 /// PIO pin.
 pub trait PioPin: gpio::Pin {}
 
+impl PioPin for AnyPin {}
+
 macro_rules! impl_pio_pin {
     ($( $pin:ident, )*) => {
         $(
