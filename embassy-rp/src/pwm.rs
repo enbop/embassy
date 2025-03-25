@@ -129,6 +129,17 @@ impl<'d> SetDutyCycle for Pwm<'d> {
 }
 
 impl<'d> Pwm<'d> {
+    pub unsafe fn new_inner_unchecked(
+        slice: usize,
+        a: Option<PeripheralRef<'d, AnyPin>>,
+        b: Option<PeripheralRef<'d, AnyPin>>,
+        b_pull: Pull,
+        config: Config,
+        divmode: Divmode,
+    ) -> Self {
+        Self::new_inner(slice, a, b, b_pull, config, divmode)
+    }
+
     fn new_inner(
         slice: usize,
         a: Option<PeripheralRef<'d, AnyPin>>,
